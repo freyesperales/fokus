@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>fokus</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      body { width: 280px; margin: 0; padding: 16px; background: #f8fafc; color: #0f172a; }
+      h1 { font-size: 16px; margin: 0 0 12px; font-weight: 700; letter-spacing: -0.01em; }
+      .status { padding: 12px; border-radius: 8px; background: #fff; border: 1px solid #e2e8f0; font-size: 13px; margin-bottom: 12px; }
+      .status.on { background: #1e40af; color: #fff; border-color: #1e40af; }
+      button { width: 100%; padding: 10px; border-radius: 8px; border: 0; background: #1e40af; color: #fff; font-weight: 600; cursor: pointer; font-size: 14px; }
+      button.ghost { background: #e2e8f0; color: #0f172a; margin-top: 8px; }
+      .row { display: flex; gap: 8px; margin-top: 8px; }
+      .row button { flex: 1; }
+      a { color: #1e40af; font-size: 12px; display: block; margin-top: 12px; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <h1>fokus</h1>
+    <div id="status" class="status">Loading…</div>
+    <button id="start">Start focus now</button>
+    <div class="row">
+      <button class="ghost" id="start-25">25 min</button>
+      <button class="ghost" id="start-50">50 min</button>
+    </div>
+    <button class="ghost" id="stop" hidden>Stop focus</button>
+    <a id="open-options" href="#">Open settings →</a>
+    <script type="module" src="./popup.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>fokus — you're focusing</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #f1f5f9;
+        color: #0f172a;
+      }
+      main {
+        max-width: 560px;
+        width: 92%;
+        background: #fff;
+        border-radius: 16px;
+        padding: 40px;
+        box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+        text-align: center;
+      }
+      h1 {
+        font-size: 32px;
+        margin: 0 0 8px;
+        letter-spacing: -0.02em;
+        color: #1e40af;
+      }
+      p.lead { color: #475569; margin: 0 0 24px; }
+      .options {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+        text-align: left;
+      }
+      .option {
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 16px;
+      }
+      .option h3 { margin: 0 0 6px; font-size: 16px; }
+      .option p { margin: 0 0 12px; font-size: 13px; color: #475569; }
+      button {
+        padding: 8px 14px;
+        border-radius: 6px;
+        border: 0;
+        background: #1e40af;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      button:disabled { background: #94a3b8; cursor: not-allowed; }
+      button.ghost { background: #e2e8f0; color: #0f172a; }
+      textarea { width: 100%; min-height: 180px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; font-size: 14px; box-sizing: border-box; resize: vertical; }
+      .count { font-size: 12px; color: #64748b; margin-top: 6px; display: flex; justify-content: space-between; }
+      .count strong { color: #0f172a; }
+      .timer { font-size: 32px; font-weight: 700; color: #1e40af; margin: 12px 0; font-variant-numeric: tabular-nums; }
+      .where { font-size: 13px; color: #64748b; margin: 8px 0 0; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>You're focusing</h1>
+      <p class="lead">This site is on your blocklist.</p>
+      <p class="where" id="where"></p>
+
+      <div class="options">
+        <div class="option" id="wait-option">
+          <h3>Wait it out</h3>
+          <p>Step away for a few minutes. If you come back, you'll get a temporary pass.</p>
+          <button id="wait-start">Start <span id="wait-min"></span>-min wait</button>
+          <div id="wait-timer" hidden>
+            <div class="timer" id="wait-display">5:00</div>
+            <button class="ghost" id="wait-cancel">Cancel</button>
+          </div>
+        </div>
+
+        <div class="option" id="write-option">
+          <h3>Write to unblock</h3>
+          <p>Reflect on why you want to visit this site. <span id="write-target"></span> words required.</p>
+          <textarea id="write-text" placeholder="Why do you want to be here right now?"></textarea>
+          <div class="count">
+            <span><strong id="write-count">0</strong> / <span id="write-need"></span> words</span>
+          </div>
+          <div style="margin-top: 8px;">
+            <button id="write-submit" disabled>Unblock</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="./blocked.ts"></script>
+  </body>
+</html>

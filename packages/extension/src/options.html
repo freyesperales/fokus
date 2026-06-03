@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>fokus — settings</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 32px 24px; background: #f8fafc; color: #0f172a; }
+      h1 { font-size: 28px; margin: 0 0 8px; letter-spacing: -0.02em; }
+      p.lead { color: #475569; margin: 0 0 24px; }
+      section { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+      h2 { font-size: 18px; margin: 0 0 12px; }
+      label { display: block; font-size: 13px; color: #475569; margin-bottom: 4px; }
+      input, select { width: 100%; padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; background: #fff; color: #0f172a; box-sizing: border-box; }
+      button { padding: 8px 16px; border-radius: 6px; border: 0; background: #1e40af; color: #fff; font-weight: 600; cursor: pointer; font-size: 14px; }
+      button.ghost { background: #e2e8f0; color: #0f172a; }
+      button.danger { background: #b91c1c; color: #fff; }
+      table { width: 100%; border-collapse: collapse; }
+      td, th { text-align: left; padding: 8px 6px; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+      th { font-weight: 600; color: #475569; }
+      .row { display: flex; gap: 10px; align-items: end; }
+      .row > * { flex: 1; }
+      .row > button { flex: 0 0 auto; }
+      .pair-code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 36px; letter-spacing: 0.2em; text-align: center; padding: 16px; background: #1e40af; color: #fff; border-radius: 8px; margin: 12px 0; }
+      .muted { color: #64748b; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>fokus settings</h1>
+    <p class="lead">Block distracting sites with a hard-mode unlock.</p>
+
+    <section>
+      <h2>Blocked sites</h2>
+      <table id="rules-table">
+        <thead><tr><th>Pattern</th><th>Type</th><th>On</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="row" style="margin-top: 16px;">
+        <div>
+          <label>Pattern (domain, e.g. <code>reddit.com</code>)</label>
+          <input id="new-pattern" placeholder="example.com" />
+        </div>
+        <div style="flex: 0 0 130px;">
+          <label>Type</label>
+          <select id="new-type">
+            <option value="domain">domain</option>
+            <option value="prefix">prefix</option>
+            <option value="regex">regex</option>
+          </select>
+        </div>
+        <button id="add-rule">Add</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Hard mode</h2>
+      <p class="muted">When you try to unblock during a session, you must wait or write.</p>
+      <div class="row">
+        <div>
+          <label>Wait minutes</label>
+          <input id="hm-wait" type="number" min="1" max="120" />
+        </div>
+        <div>
+          <label>Required words</label>
+          <input id="hm-words" type="number" min="50" max="1000" />
+        </div>
+        <div>
+          <label>Allowance after unlock (min)</label>
+          <input id="hm-allow" type="number" min="1" max="120" />
+        </div>
+      </div>
+      <div class="row" style="margin-top: 12px;">
+        <label style="flex: 1;"><input type="checkbox" id="hm-enabled" /> Hard mode enabled (off = soft mode: one click to disable)</label>
+        <button id="save-hm">Save</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Pair with PWA dashboard</h2>
+      <p class="muted">The dashboard lets you edit your blocklist from your phone or another browser.</p>
+      <div class="row">
+        <div>
+          <label>PWA origin (e.g. http://localhost:3000)</label>
+          <input id="pair-origin" placeholder="http://localhost:3000" value="http://localhost:3000" />
+        </div>
+        <div style="flex: 0 0 160px;">
+          <label>6-letter code</label>
+          <input id="pair-code" placeholder="ABCDEF" maxlength="6" style="text-transform: uppercase;" />
+        </div>
+        <button id="pair-go">Pair</button>
+      </div>
+      <p id="pair-status" class="muted" style="margin-top: 8px;"></p>
+    </section>
+
+    <script type="module" src="./options.ts"></script>
+  </body>
+</html>

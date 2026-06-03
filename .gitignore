@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.next/
+out/
+*.log
+.DS_Store
+.env*.local
+*.tsbuildinfo
+coverage/
+fokus.db
+fokus.db-journal

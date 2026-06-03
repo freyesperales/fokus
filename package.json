@@ -1,0 +1,16 @@
+{
+  "name": "fokus",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hybrid website blocker (browser extension + PWA) with hard mode unlocking",
+  "license": "MIT",
+  "author": "Francisco Reyes",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm test --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  }
+}
